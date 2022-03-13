@@ -1,408 +1,227 @@
-﻿using CRUD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class program
+//-----------------------
+//    INTEGRANTES
+//    IVAN HERNANDEZ RUIZ
+//    DAGOBERTO ALTAMAR
+//-----------------------
+
+namespace Parcial1
 {
-    static void Main(String[] args)
+    class Program
     {
-        int TOTAL = 5;
-        int MENU;
-        int MENU1;
-        int MENUEST;
-        int MENUPROF;
-        int ID;
-        int CANTEST = 0;
-        bool VALIDACION;
-
-        estudiante EST = new estudiante();
-        List<estudiante> LISTAEST = new List<estudiante>(TOTAL);
-
-        do
+        static void Main(string[] args)
         {
-            Console.WriteLine("\n 1. Guardar monedas \n 2. Cantidad de monedas \n 3. Cantidad de dinero \n 4. Cantidad de moneda por denominacion \n 5. Cantidad de dinero  por denominacion \n 6. Salir");
+            int TOTAL = 0;
+            int MENU;
+            int CANTIDAD = 0;
 
-            MENU = System.Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
+            int MONEDA1 = 0;
+            int MONEDA2 = 0;
+            int MONEDA3 = 0;
+            int MONEDA4 = 0;
+            int MONEDA5 = 0;
 
-            if (MENU >= 1 || MENU <= 6)
+            int TOTAL1 = 0;
+            int TOTAL2 = 0;
+            int TOTAL3 = 0;
+            int TOTAL4 = 0;
+            int TOTAL5 = 0;
+            int TOTALT = 0;
+
+            AHORRO M = new AHORRO();
+            List<AHORRO> LISTA = new List<AHORRO>(TOTAL);
+            List<AHORRO> LISTAMONEDA1 = new List<AHORRO>(TOTAL);
+            List<AHORRO> LISTAMONEDA2 = new List<AHORRO>(TOTAL);
+            List<AHORRO> LISTAMONEDA3 = new List<AHORRO>(TOTAL);
+            List<AHORRO> LISTAMONEDA4 = new List<AHORRO>(TOTAL);
+            List<AHORRO> LISTAMONEDA5 = new List<AHORRO>(TOTAL);
+
+            do
             {
-                Console.WriteLine("ERROR");
-            }
+                Console.WriteLine(
+                    "\n------------------------------" +
+                    "\n------------------------------" +
+                    "\n 1. Guardar monedas " +
+                    "\n 2. Cantidad de monedas " +
+                    "\n 3. Cantidad de dinero " +
+                    "\n 4. Cantidad de moneda por denominacion " +
+                    "\n 5. Cantidad de dinero  por denominacion " +
+                    "\n 6. Salir" +
+                    "\n------------------------------" +
+                    "\n------------------------------");
 
-            Console.Clear();
 
-            switch (MENU)
-            {
+                MENU = System.Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
 
-                case 1:
+                if (MENU >= 1 || MENU <= 6)
+                {
+                    Console.WriteLine("ERROR");
+                }
 
-                    Console.WriteLine("Inserte su moneda");
-                    EST.MONEDA = int.Parse(Console.ReadLine());
-                    Console.Clear();
+                Console.Clear();
 
-                    Console.WriteLine("\n 1. Insertar moneda \n 2. Devolverse al menu anterior");
-                    MENU1 = System.Convert.ToInt32(Console.ReadLine());
-                    Console.Clear();
 
-                    if (MENU1 >= 1 || MENU1 <= 2)
-                    {
-                        Console.WriteLine("ERROR");
-                    }
-                    for (int index1 = 0; index1 < 100; index1++)
-                    {
-                        switch (MENU1)
+                switch (MENU)
+                {
+                    case 1:
+                        Console.WriteLine("\n Insertar moneda de las siguientes dominaciones: " +
+                           "\n 50" +
+                           "\n 100" +
+                           "\n 200" +
+                           "\n 500" +
+                           "\n 1000" +
+                           "\n------------------------------");
+                        M.MONEDA = int.Parse(Console.ReadLine());
+                        if (M.MONEDA == 50 || M.MONEDA == 100 || M.MONEDA == 200 || M.MONEDA == 500 || M.MONEDA == 1000)
                         {
-                            case 1:
-
-                                if (EST.MONEDA == 50 || EST.MONEDA == 100 || EST.MONEDA == 200 || EST.MONEDA == 500 || EST.MONEDA == 1000)
-                                {
-                                    Console.WriteLine("Inserte su moneda");
-                                    EST.MONEDA = int.Parse(Console.ReadLine());
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Ingrese una moneda valida");
-                                }
+                            Console.WriteLine("\n------------------------------" +
+                                "\n------------------------------"+
+                                "\n GUARDADO" +
+                                "\n------------------------------" +
+                                "\n------------------------------");
+                            LISTA.Add(new AHORRO(M.MONEDA));
+                            CANTIDAD = 0;
+                            CANTIDAD++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n------------------------------" +
+                                "\n------------------------------" +
+                                "\n Ingrese una moneda valida" +
+                                "\n------------------------------" +
+                                "\n------------------------------");
                         }
 
-                    }
+                        if (M.MONEDA == 50)
+                        {
+                            LISTAMONEDA1.Add(new AHORRO(M.MONEDA));
+                            MONEDA1 = 0;
+                            MONEDA1++;
+                            TOTAL1 = LISTAMONEDA1.Count * 50;
+                        }
+                        else if (M.MONEDA == 100)
+                        {
+                            LISTAMONEDA2.Add(new AHORRO(M.MONEDA));
+                            MONEDA2 = 0;
+                            MONEDA2++;
+                            TOTAL2 = LISTAMONEDA2.Count * 100;
+                        }
+                        else if (M.MONEDA == 200)
+                        {
+                            LISTAMONEDA3.Add(new AHORRO(M.MONEDA));
+                            MONEDA3 = 0;
+                            MONEDA3++;
+                            TOTAL3 = LISTAMONEDA3.Count * 200;
+                        }
+                        else if (M.MONEDA == 500)
+                        {
+                            LISTAMONEDA4.Add(new AHORRO(M.MONEDA));
+                            MONEDA4 = 0;
+                            MONEDA4++;
+                            TOTAL4 = LISTAMONEDA4.Count * 500;
+                        }
+                        else if (M.MONEDA == 1000)
+                        {
+                            LISTAMONEDA5.Add(new AHORRO(M.MONEDA));
+                            MONEDA5 = 0;
+                            MONEDA5++;
+                            TOTAL5 = LISTAMONEDA5.Count * 1000;
+                        }
+                        break;
 
+                    case 2:
+                        Console.WriteLine($"Se han registrado  " + LISTA.Count + $" monedas.");
+                        break;
 
+                    case 3:
+                        TOTALT = TOTAL1 + TOTAL2 + TOTAL3 + TOTAL4 + TOTAL5;
+                        Console.WriteLine($"Cantidad de dinero " + TOTALT);
+                        break;
 
+                    case 4:
+                        Console.WriteLine("\n Ingrese el valor de la moneda que desea conocer su cantidad: " +
+                           "\n 50" +
+                           "\n 100" +
+                           "\n 200" +
+                           "\n 500" +
+                           "\n 1000" +
+                           "\n------------------------------");
+                        M.MONEDA = int.Parse(Console.ReadLine());
 
+                        if (M.MONEDA == 50)
+                        {
+                            Console.WriteLine($"Cantidad de monedas por denominacion de 50 es: " + LISTAMONEDA1.Count + $" monedas.");
+                        }
+                        else if (M.MONEDA == 100)
+                        {
+                            Console.WriteLine($"Cantidad de monedas por denominacion de 100 es: " + LISTAMONEDA2.Count + $" monedas.");
+                        }
+                        else if (M.MONEDA == 200)
+                        {
+                            Console.WriteLine($"Cantidad de monedas por denominacion de 200 es: " + LISTAMONEDA3.Count + $" monedas.");
+                        }
+                        else if (M.MONEDA == 500)
+                        {
+                            Console.WriteLine($"Cantidad de monedas por denominacion de 500 es: " + LISTAMONEDA4.Count + $" monedas.");
+                        }
+                        else if (M.MONEDA == 1000)
+                        {
+                            Console.WriteLine($"Cantidad de monedas por denominacion de 1000 es: " + LISTAMONEDA5.Count + $" monedas.");
+                        }
+                        else {
+                            Console.WriteLine($"Moneda no valida");
+                        }
+                        break;
 
-                    break;
+                    case 5:
+                        Console.WriteLine("\n Ingrese el valor de la moneda al que desea conocer su total: " +
+                           "\n 50" +
+                           "\n 100" +
+                           "\n 200" +
+                           "\n 500" +
+                           "\n 1000" +
+                           "\n------------------------------");
+                        M.MONEDA = int.Parse(Console.ReadLine());
 
+                        if (M.MONEDA == 50)
+                        {
+                            Console.WriteLine($"Cantidad de dinero por denominacion de 50 es: " + TOTAL1);
+                        }
+                        else if (M.MONEDA == 100)
+                        {
+                            Console.WriteLine($"Cantidad de dinero por denominacion de 100 es: " + TOTAL2);
+                        }
+                        else if (M.MONEDA == 200)
+                        {
+                            Console.WriteLine($"Cantidad de dinero por denominacion de 200 es: " + TOTAL3);
+                        }
+                        else if (M.MONEDA == 500)
+                        {
+                            Console.WriteLine($"Cantidad de dinero por denominacion de 500 es: " + TOTAL4);
+                        }
+                        else if (M.MONEDA == 1000)
+                        {
+                            Console.WriteLine($"Cantidad de dinero por denominacion de 1000 es: " + TOTAL5);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Moneda no valida");
+                        }
+                        break;
 
-                    //case 1:
-                    //    Console.WriteLine("MENU ESTUDIANTE: \n 1. INSERTAR \n 2. ELIMINAR \n 3. MODIFICAR \n 4. LISTAR \n 5. REGRESAR");
-                    //    MENUEST = System.Convert.ToInt32(Console.ReadLine());
-                    //    Console.Clear();
-                    //    switch (MENUEST)
-                    //    {
-                    //        case 1:
-                    //            Console.WriteLine("NOMBRE:");
-                    //            EST.NOMBRE = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("APELLIDO:");
-                    //            EST.APELLIDO = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("IDENTIFICACION:");
-                    //            EST.IDENTIFICACION = int.Parse(Console.ReadLine());
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("SEXO \n 1.HOMBRE \n 2.MUJER  ");
-                    //            EST.SEXO = int.Parse(Console.ReadLine());
-                    //            Console.Clear();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("EDAD:");
-                    //            EST.Edad = int.Parse(Console.ReadLine());
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("ESCUELA:");
-                    //            EST.ESCUELA = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            LISTAEST.Add(new estudiante(EST.Edad, EST.ESCUELA, EST.IDENTIFICACION, EST.NOMBRE, EST.APELLIDO, EST.SEXO));
-                    //            CANTEST = 0;
-                    //            CANTEST++;
-
-                    //            break;
-                    //        case 2:
-
-                    //            if (LISTAEST.Count == 0)
-                    //            {
-                    //                Console.WriteLine("NO HAY REGISTRO");
-                    //            }
-                    //            else
-                    //            {
-                    //                Console.WriteLine($"ESTUDIANTES:  " + LISTAEST.Count);
-                    //            }
-
-                    //            Console.WriteLine("IDENTIFICACION DEL ESTUDIANTE A ELIMINAR");
-                    //            ID = System.Convert.ToInt32(Console.ReadLine());
-                    //            Console.Clear();
-                    //            VALIDACION = false;
-
-                    //            Console.WriteLine("LISTAR ESTUDIANTE " + LISTAEST.Count);
-                    //            Console.Clear();
-
-                    //            foreach (var item in LISTAEST)
-                    //            {
-                    //                if (ID == item.IDENTIFICACION)
-                    //                {
-                    //                    VALIDACION = true;
-                    //                    LISTAEST.Remove(item);
-
-                    //                    Console.WriteLine($"ELIMINADO");
-                    //                    break;
-                    //                }
-                    //            }
-                    //            if (!VALIDACION)
-                    //            {
-
-                    //                Console.WriteLine($"NO EXISTE");
-
-                    //            }
-                    //            Console.WriteLine("LISTA ESTUDIANTE" + LISTAEST.Count);
-                    //            break;
-                    //        case 3:
-                    //            Console.WriteLine("IDENTIFICACION DEL ESTUDIANTE A MODIFICAR");
-                    //            ID = System.Convert.ToInt32(Console.ReadLine());
-
-                    //            foreach (estudiante item in LISTAEST)
-                    //            {
-                    //                if (ID == item.IDENTIFICACION)
-                    //                {
-
-                    //                    Console.WriteLine($"NOMBRE : {item.NOMBRE} | APELLIDO : {item.APELLIDO} | IDENTIFICACION : {item.IDENTIFICACION} | EDAD : {item.Edad} | SEXO : {item.SEXO} | ESCUELA : {item.ESCUELA} |");
-
-                    //                    Console.WriteLine("NOMBRE :");
-                    //                    EST.NOMBRE = Console.ReadLine();
-                    //                    EST.NOMBRE = EST.NOMBRE;
-                    //                    Console.WriteLine("APELLIDO :");
-                    //                    EST.APELLIDO = Console.ReadLine();
-                    //                    EST.APELLIDO = EST.APELLIDO;
-                    //                    Console.WriteLine("IDENTIFICACION :");
-                    //                    EST.IDENTIFICACION = Convert.ToInt32(Console.ReadLine());
-                    //                    EST.IDENTIFICACION = EST.IDENTIFICACION;
-                    //                    Console.WriteLine("EDAD :");
-                    //                    EST.Edad = Convert.ToInt32(Console.ReadLine());
-                    //                    EST.Edad = EST.Edad;
-                    //                    Console.WriteLine("SEXO \n 1.HOMBRE \n 2.MUJER  :");
-                    //                    EST.SEXO = Convert.ToInt32(Console.ReadLine());
-                    //                    EST.SEXO = EST.SEXO;
-                    //                    Console.WriteLine("ESCUELA :");
-                    //                    EST.ESCUELA = Console.ReadLine();
-                    //                    EST.ESCUELA = EST.ESCUELA;
-                    //                    Console.WriteLine("\n");
-                    //                    Console.WriteLine("MODIFICACION EXITOSA ");
-                    //                    break;
-                    //                }
-                    //                else
-                    //                {
-                    //                    Console.WriteLine($"NO EXISTE");
-                    //                }
-                    //            }
-
-                    //            break;
-                    //        case 4:
-
-                    //            String Masculino = "HOMBRE";
-                    //            String Femenino = "MUJER";
-                    //            foreach (estudiante item in LISTAEST)
-                    //            {
-                    //                Console.WriteLine($"NOMBRE : {item.NOMBRE} ");
-                    //                Console.WriteLine($"APELLIDO: {item.APELLIDO} ");
-                    //                Console.WriteLine($"IDENTIFICACION: {item.IDENTIFICACION} ");
-                    //                if (item.SEXO == 1)
-                    //                {
-                    //                    Console.WriteLine($"SEXO: {Masculino} ");
-                    //                }
-                    //                else if (item.SEXO == 2)
-                    //                {
-                    //                    Console.WriteLine($"SEXO: {Femenino} ");
-                    //                }
-                    //                else
-                    //                {
-                    //                    Console.WriteLine("DIGITO NO VALIDO");
-                    //                }
-                    //                Console.WriteLine($"EDAD: {item.Edad} ");
-                    //                Console.WriteLine($"ESCUELA: {item.ESCUELA} \n ");
-
-                    //            }
-                    //            break;
-                    //        case 5:
-                    //            break;
-                    //    }
-                    //    break;
-
-                    //case 2:
-                    //    Console.WriteLine("PROFESOR \n 1. INSERTAR \n 2. ELIMINAR \n 3. EDITAR \n 4. LISTAR  \n 5. REGRESAR");
-                    //    MENUPROF = System.Convert.ToInt32(Console.ReadLine());
-                    //    Console.Clear();
-
-                    //    switch (MENUPROF)
-                    //    {
-
-                    //        case 1:
-                    //            Console.WriteLine("NOMBRE");
-                    //            PROF.NOMBRE = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("APELLIDO");
-                    //            PROF.APELLIDO = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("IDENTIFICACION");
-                    //            PROF.IDENTIFICACION = int.Parse(Console.ReadLine());
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("SEXO \n 1.HOMBRE \n 2.MUJER  :");
-                    //            PROF.SEXO = int.Parse(Console.ReadLine());
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("PROFESION");
-                    //            PROF.PROFESION = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("UNIVERSIDAD");
-                    //            PROF.UNIVERSIDAD = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("FECHA DE INGRESO");
-                    //            PROF.FECHAINGRESO = Console.ReadLine();
-                    //            Console.Clear();
-
-                    //            Console.WriteLine("AÑO DE CULMINACION");
-                    //            PROF.AÑOFINALIZACION = Console.ReadLine();
-                    //            Console.Clear();
-
-
-                    //            LISTAP.Add(new Profesor(
-                    //                PROF.NOMBRE, PROF.APELLIDO, PROF.IDENTIFICACION, PROF.SEXO, PROF.PROFESION, PROF.UNIVERSIDAD,PROF.FECHAINGRESO, PROF.AÑOFINALIZACION, PROF.NIVEL_ACADEMICO));
-
-
-
-                    //            break;
-                    //        case 2:
-
-                    //            if (LISTAP.Count == 0)
-                    //            {
-                    //                Console.WriteLine("No hay datos, La Lista Esta Vacia");
-                    //            }
-                    //            else
-                    //            {
-                    //                Console.WriteLine($"Profesores Registrados :  " + LISTAP.Count);
-                    //            }
-                    //            Console.WriteLine("Ingrese la IDENTIFICACION para eliminar al Profesor .");
-                    //            ID = System.Convert.ToInt32(Console.ReadLine());
-                    //            Console.Clear();
-                    //            VALIDACION = false;
-                    //            Console.WriteLine("Profesores Registrados " + LISTAP.Count);
-                    //            Console.Clear();
-
-                    //            foreach (var item in LISTAP)
-                    //            {
-                    //                if (ID == item.IDENTIFICACION)
-                    //                {
-                    //                    VALIDACION = true;
-                    //                    LISTAP.Remove(item);
-
-                    //                    Console.WriteLine($"El Profesor con  -> ( IDENTIFICACION = {item.IDENTIFICACION}) Eliminado ");
-                    //                    Console.WriteLine($"Datos del Profesor :  \n IDENTIFICACION : {item.IDENTIFICACION} | NOMBRE : {item.NOMBRE} | APELLIDO : {item.APELLIDO} | Fecha De Ingreso : {item.FECHAINGRESO} | PROFESION : {item.PROFESION} | UNIVERSIDAD : {item.UNIVERSIDAD} | SEXO : {item.SEXO} | Año de Culminacion : {item.AÑOFINALIZACION} |");
-
-                    //                    break;
-                    //                }
-                    //            }
-                    //            if (!VALIDACION)
-                    //            {
-                    //                Console.WriteLine($"El Profesor con IDENTIFICACION ( {ID} ) no existe");
-                    //            }
-                    //            Console.WriteLine("Profesores disponibles Disponibles " + LISTAP.Count);
-                    //            break;
-                    //        case 3:
-
-                    //            if (LISTAP.Count == 0)
-                    //            {
-                    //                Console.WriteLine("NO HAY REGISROS");
-                    //            }
-                    //            else
-                    //            {
-                    //                Console.WriteLine($"PROFESORES EN LISTA:  " + LISTAP.Count);
-
-                    //            }
-
-                    //            Console.WriteLine("IDENTIFICACION DEL PROFESOR A MODIFICAR");
-                    //            ID = System.Convert.ToInt32(Console.ReadLine());
-                    //            Console.Clear();
-                    //            VALIDACION = false;
-
-                    //            Console.WriteLine("PROFESORES REGISTRADOS" + LISTAP.Count);
-                    //            Console.Clear();
-                    //            int i = 0;
-                    //            foreach (var item in LISTAP)
-                    //            {
-                    //                i++;
-                    //                if (ID == item.IDENTIFICACION)
-                    //                {
-                    //                    VALIDACION = true;
-                    //                    Console.WriteLine($"NOMBRE: {item.NOMBRE} | APELLIDO : {item.APELLIDO} |  IDENTIFICACION : {item.IDENTIFICACION} | SEXO : {item.SEXO} |");
-
-                    //                    Console.WriteLine("NOMBRE");
-                    //                    PROF.NOMBRE = Console.ReadLine();
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("APELLIDO");
-                    //                    PROF.APELLIDO = Console.ReadLine();
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("IDENTIFICACION");
-                    //                    PROF.IDENTIFICACION = int.Parse(Console.ReadLine());
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("EDAD");
-                    //                    PROF.SEXO = int.Parse(Console.ReadLine());
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("PROFESION");
-                    //                    PROF.PROFESION = Console.ReadLine();
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("NIVEL ACADEMICO");
-                    //                    PROF.NIVEL_ACADEMICO = Console.ReadLine();
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("AÑO DE CULMINACION");
-                    //                    PROF.AÑOFINALIZACION = Console.ReadLine();
-                    //                    Console.Clear();
-
-                    //                    Console.WriteLine("UNIVERSIDAD");
-                    //                    PROF.UNIVERSIDAD = Console.ReadLine();
-
-                    //                    LISTAP[i] = PROF;
-
-                    //                    break;
-                    //                }
-                    //            }
-                    //            if (!VALIDACION)
-                    //            {
-                    //                Console.WriteLine($"NO EXISTE");
-                    //            }
-                    //            else
-                    //            {
-                    //                Console.WriteLine("SUCCESFULL");
-                    //            }
-                    //            break;
-                    //        case 4:
-                    //            foreach (Profesor item in LISTAP)
-                    //            {
-                    //                Console.WriteLine($"NOMBRE: {item.NOMBRE}");
-                    //                Console.WriteLine($"APELLIDO: {item.APELLIDO}");
-                    //                Console.WriteLine($"IDENTIFICACION: {item.IDENTIFICACION}");
-                    //                Console.WriteLine($"PROFESION: {item.PROFESION}");
-                    //                Console.WriteLine($"UNIVERSIDAD: {item.UNIVERSIDAD}");
-                    //                Console.WriteLine($"AÑO DE CULMINACION: {item.AÑOFINALIZACION}");
-                    //                Console.WriteLine($"FECHA DE INGRESO: {item.FECHAINGRESO}");
-                    //            }
-                    //            break;
-                    //        case 5:
-                    //            break;
-                    //    }
-                    //    break;
-                    //case 3:
-                    //    Console.WriteLine("...");
-                    //    break;
+                    case 6:
+                        Console.WriteLine("Saliendo...");
+                        break;
+                }
             }
+            while (MENU != 6);
+            Console.Clear();
         }
-        while (MENU != 3);
-        Console.Clear();
     }
 }
